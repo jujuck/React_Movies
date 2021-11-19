@@ -7,8 +7,8 @@ Ceci est un projet Front End s'intégrant dans un module Workshop avec le repo B
 - 5/ Mise en place du CSS, logo du menu
 - 6/ Mise en place de la bannière Hero avec une image en background et un slogan
 - 7/ Page Home : mise en place d'un state movies et fetch de notre back end (pensez à lancer un deuxième process sur votre PC avec votre projet Express_MySQL_Movies)
-      Attention, in order to make request from to differents URL or Port, you should allow cors origin.
-      Go to your back end project, install cors, import it in the main app and add 'app.use(cors())' above app.use(express.json()
+      Attention, pour pouvoir effectuer des requetes depuis des origines différentes, il faut les autoriser.
+      Retournez dans votre projet Back End, installez cors, importer le dans le fichier principale et ajouter 'app.use(cors())' au dessus de app.use(express.json()
 - 8/ Mise en place d'un map sur notre state pour afficher des cartes des films + css
 - 9/ Ajout de la fonction OnClick sur notre carte pour aller à la page single avec ajout de l'id
 - 10/ Page Single : récupération de l'id en params, mise en place d'un state pour un film et fetch de notre back end pour récupérer la donnée
