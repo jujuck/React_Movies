@@ -11,7 +11,11 @@ const Home = () => {
       .catch((err) => console.error(err));
     console.log(movies);
   }, []);
-  return <div>Home</div>;
+  return (
+    <div>
+      {movies.length > 0 && movies.map((movie) => <h1>{movie.title}</h1>)}
+    </div>
+  );
 };
 
 export default Home;
