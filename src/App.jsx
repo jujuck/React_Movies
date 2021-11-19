@@ -1,21 +1,20 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+/** Import des pages */
 import Home from './pages/Home';
 import Single from './pages/Single';
 import AddMovie from './pages/AddMovie';
 
+/** Import des composants */
+import Menu from './components/Menu';
+import Hero from './components/Hero';
+
 function App() {
   return (
     <BrowserRouter>
-      <nav>
-        <Link exact to="/">
-          Home
-        </Link>
-        <Link exact to="/AddMovie">
-          Add a movie
-        </Link>
-        <Link to="/single/1">single 1</Link>
-      </nav>
+      <Menu />
+      <Hero />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/AddMovie" element={<AddMovie />} />

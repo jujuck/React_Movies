@@ -1,0 +1,18 @@
+.hero {
+  min-height: 500px;
+  background-image: url('../assets/images/hero.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  padding-left: 45%;
+  padding-top: 10%;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 5rem;
+}
+
+.hero h4 {
+  font-size: 3rem;
+}
