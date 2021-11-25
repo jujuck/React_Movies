@@ -11,3 +11,23 @@
   height: 50%;
   border-radius: 15px;
 }
+
+.movieBtn {
+  color: white;
+  background-color: black;
+  padding: 2%;
+  height: 10%;
+  width: 100px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.movieBtn:hover {
+  background-color: white;
+  border: 2px border black;
+  color: black;
+  -webkit-transition: 1s;
+  -moz-transition: 1s;
+  -o-transition: 1s;
+  transition: 1s;
+}

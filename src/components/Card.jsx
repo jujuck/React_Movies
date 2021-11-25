@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 /** Import du CSS */
 import './Card.css';
 
@@ -13,6 +14,7 @@ import {
 } from '../assets/images';
 
 const Card = ({ movie }) => {
+  const navigate = useNavigate();
   const getImgSrc = {
     action,
     drama,
@@ -20,6 +22,10 @@ const Card = ({ movie }) => {
     'science-fiction': sciencefiction,
     romantic,
     comedy,
+  };
+
+  const goToMoviePage = (id) => {
+    navigate(`/single/${id}`);
   };
 
   return (
@@ -30,6 +36,13 @@ const Card = ({ movie }) => {
         alt={movie.title}
         className="movieImg"
       />
+      <button
+        type="submit"
+        onClick={() => goToMoviePage(movie.id)}
+        className="movieBtn"
+      >
+        En savoir plus
+      </button>
     </div>
   );
 };
