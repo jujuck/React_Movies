@@ -15,3 +15,4 @@ Ceci est un projet Front End s'intégrant dans un module Workshop avec le repo B
 - 11/ Page Single : récupération de l'id en params, mise en place d'un state pour un film et fetch de notre back end pour récupérer la donnée
 - 12/ Mise en forme des détails avec images, titre, description, genre, annee et durée
 - 13/ Ajout du bouton supprimer avec onClick => suppression en BDD et redirection vers home
+- 14/ Amelioration UX, lors de la suppression un modal (nouveau composant npm react-modal ) de confirmation est mis en place, puis message de confirmation de suppresion. Lors du clic sur OK, redirection ver home
