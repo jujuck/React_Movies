@@ -14,3 +14,4 @@ Ceci est un projet Front End s'intégrant dans un module Workshop avec le repo B
 - 10/ Ajout de la fonction OnClick avec un bouton sur notre carte pour aller à la page single avec ajout de l'id
 - 11/ Page Single : récupération de l'id en params, mise en place d'un state pour un film et fetch de notre back end pour récupérer la donnée
 - 12/ Mise en forme des détails avec images, titre, description, genre, annee et durée
+- 13/ Ajout du bouton supprimer avec onClick => suppression en BDD et redirection vers home
