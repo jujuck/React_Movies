@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+/** Import du CSS */
+import './Home.css';
+
+/** Import des composants */
+import Card from '../components/Card';
+
 const Home = () => {
   const [movies, setMovies] = useState([]);
 
@@ -9,11 +15,10 @@ const Home = () => {
       .get('http://localhost:5000/movies')
       .then((res) => setMovies(res.data))
       .catch((err) => console.error(err));
-    console.log(movies);
   }, []);
   return (
-    <div>
-      {movies.length > 0 && movies.map((movie) => <h1>{movie.title}</h1>)}
+    <div className="home">
+      {movies.length > 0 && movies.map((movie) => <Card movie={movie} />)}
     </div>
   );
 };

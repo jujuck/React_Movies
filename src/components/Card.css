@@ -1,0 +1,13 @@
+.card {
+  text-align: center;
+  flex-basis: 25%;
+  height: 300px;
+  border: 2px solid black;
+  border-radius: 15px;
+}
+
+.movieImg {
+  width: 90%;
+  height: 50%;
+  border-radius: 15px;
+}
