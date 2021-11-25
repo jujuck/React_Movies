@@ -1,0 +1,20 @@
+.popupBtn {
+  background-color: white;
+  border: 2px border black;
+  color: black;
+  padding: 2%;
+  height: 10%;
+  width: 100px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.popupBtn:hover {
+  color: white;
+  background-color: black;
+  border: 2px border white;
+  -webkit-transition: 1s;
+  -moz-transition: 1s;
+  -o-transition: 1s;
+  transition: 1s;
+}
