@@ -1,0 +1,9 @@
+.movieForm {
+  display: block;
+}
+
+.movieForm input,
+.movieForm textarea {
+  width: 80%;
+  margin: 0 3%;
+}

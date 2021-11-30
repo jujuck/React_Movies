@@ -7,6 +7,7 @@ import { BiEditAlt } from 'react-icons/bi';
 
 /** Import de composant */
 import Message from '../components/Message';
+import MovieForm from '../components/MovieForm';
 
 /** Import du CSS */
 import './Single.css';
@@ -35,6 +36,7 @@ const customStyles = {
     color: 'white',
     borderRadius: '15px',
     textAlign: 'center',
+    width: '60%',
   },
 };
 const Single = () => {
@@ -75,6 +77,11 @@ const Single = () => {
     setConfirmation(false);
   };
 
+  const onCancelModification = (movie) => {
+    if (movie) setMyMovie(movie);
+    setModification(false);
+  };
+
   return (
     <div id="singleMovie" className="singleovieContainer">
       <Modal isOpen={confirmation} style={customStyles}>
@@ -84,7 +91,6 @@ const Single = () => {
           buttonAction={onDeleteConfirmation}
         />
       </Modal>
-
       <Modal isOpen={redirection} style={customStyles}>
         <Message
           title="Suppression d'un film"
@@ -92,7 +98,7 @@ const Single = () => {
         />
       </Modal>
       <Modal isOpen={modification} style={customStyles}>
-        <h1>Modal de modification</h1>
+        <MovieForm myMovie={myMovie} buttonAction={onCancelModification} />
       </Modal>
       <h2>{myMovie.title}</h2>
       <h4>{myMovie.synopsis}</h4>
