@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { RiDeleteBin6Line } from 'react-icons/ri';
+import Modal from 'react-modal';
 import axios from 'axios';
+import { RiDeleteBin6Line } from 'react-icons/ri';
+import { BiEditAlt } from 'react-icons/bi';
 
 /** Import de composant */
 import Message from '../components/Message';
@@ -19,10 +21,27 @@ import {
   comedy,
 } from '../assets/images';
 
+Modal.setAppElement('#root');
+
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+    backgroundColor: 'black',
+    color: 'white',
+    borderRadius: '15px',
+    textAlign: 'center',
+  },
+};
 const Single = () => {
   const [myMovie, setMyMovie] = useState({});
   const [confirmation, setConfirmation] = useState(false);
   const [redirection, setRedirection] = useState(false);
+  const [modification, setModification] = useState(false);
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -51,24 +70,30 @@ const Single = () => {
   const onDeleteConfirmation = (validation) => {
     if (validation) {
       deleteOneMovie();
+      setRedirection(true);
     }
     setConfirmation(false);
-    setRedirection(true);
   };
 
   return (
     <div id="singleMovie" className="singleovieContainer">
-      <Message
-        title="Suppression d'un film"
-        description={`Confirmez vous la suppression du film ${myMovie.title}`}
-        buttonAction={onDeleteConfirmation}
-        confirmation={confirmation}
-      />
-      <Message
-        title="Suppression d'un film"
-        description={`Suppression du film ${myMovie.title} en cours. Vous allez être redirigé`}
-        confirmation={redirection}
-      />
+      <Modal isOpen={confirmation} style={customStyles}>
+        <Message
+          title="Suppression d'un film"
+          description={`Confirmez vous la suppression du film ${myMovie.title}`}
+          buttonAction={onDeleteConfirmation}
+        />
+      </Modal>
+
+      <Modal isOpen={redirection} style={customStyles}>
+        <Message
+          title="Suppression d'un film"
+          description={`Suppression du film ${myMovie.title} en cours. Vous allez être redirigé`}
+        />
+      </Modal>
+      <Modal isOpen={modification} style={customStyles}>
+        <h1>Modal de modification</h1>
+      </Modal>
       <h2>{myMovie.title}</h2>
       <h4>{myMovie.synopsis}</h4>
       <img
@@ -87,6 +112,14 @@ const Single = () => {
       >
         Supprimer
         <RiDeleteBin6Line />
+      </button>
+      <button
+        type="submit"
+        onClick={() => setModification(true)}
+        className="movieBtn"
+      >
+        Modifier
+        <BiEditAlt />
       </button>
     </div>
   );
