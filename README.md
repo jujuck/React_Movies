@@ -16,6 +16,6 @@ Ceci est un projet Front End s'intégrant dans un module Workshop avec le repo B
 - 12/ Mise en forme des détails avec images, titre, description, genre, annee et durée
 - 13/ Ajout du bouton supprimer avec onClick => suppression en BDD et redirection vers home
 - 14/ Amelioration UX, lors de la suppression un modal (nouveau composant npm react-modal ) de confirmation est mis en place, puis message de confirmation de suppresion. Lors du clic sur OK, redirection ver home
--15/ Ajout d'un bouton Modifier qui ouvrira un modal (Restructurer le message pour une meilleure utilisation du modal)
--16/ Dans ce modal, faire un formulaire qui récupérera les values du films pour modification, puis envoir de la requete PUT pour modifier le films. A la fermeture du modal les informations de la page doivent être à jour.
--17/ Mettre en place la page création à partir du formulaire déjà existant en y ajoutant une method Post. Pensez à y integrer la vérification de la présence des champs, sinon message UX puis si requete succes, redirection vers home
+ -15/ Ajout d'un bouton Modifier qui ouvrira un modal (Restructurer le message pour une meilleure utilisation du modal)
+ -16/ Dans ce modal, faire un formulaire qui récupérera les values du films pour modification, puis envoir de la requete PUT pour modifier le films. A la fermeture du modal les informations de la page doivent être à jour.
+ -17/ Mettre en place la page création à partir du formulaire déjà existant en y ajoutant une method Post. Pensez à y integrer la vérification de la présence des champs, sinon message UX puis si requete succes, redirection vers home
