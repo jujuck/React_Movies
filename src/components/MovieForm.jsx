@@ -4,15 +4,38 @@ import axios from 'axios';
 /** Import du CSS */
 import './MovieForm.css';
 
-const MovieForm = ({ myMovie, buttonAction }) => {
+const MovieForm = ({ myMovie = {}, buttonAction, create = false }) => {
   const [movie, setMovie] = useState(myMovie);
+  const [message, setMessage] = useState(false);
 
+  /**
+   * Mise à jour du state du film
+   * @param {*} value
+   * @param {*} type
+   */
   const updateMovie = (value, type) => {
     const newMovie = { ...movie };
-    newMovie[type] = value;
+    if (type === 'year' || type === 'duration') {
+      newMovie[type] = parseInt(value, 10);
+    } else {
+      newMovie[type] = value;
+    }
     setMovie(newMovie);
   };
 
+  /**
+   * Vérification de la présence des champs
+   * @returns
+   */
+  const checkValidity = () => {
+    const { title, genre, synopsis, year, duration } = movie;
+    return title && genre && synopsis && year && duration;
+  };
+
+  /**
+   * Mise à jour du film en BDD
+   * create = false (Possible si modal depuis single)
+   */
   const updateMovieInBDD = () => {
     axios
       .put(`http://localhost:5000/movies/${movie.id}`, { ...movie })
@@ -20,15 +43,32 @@ const MovieForm = ({ myMovie, buttonAction }) => {
       .catch((err) => console.error(err));
   };
 
+  /**
+   * Création d'un film en BDD
+   * Create = true (Page add Movie)
+   */
+  const createMovieInBDD = () => {
+    const validity = checkValidity();
+    if (validity) {
+      axios
+        .post(`http://localhost:5000/movies/`, { ...movie })
+        .then(() => buttonAction())
+        .catch((err) => console.error(err));
+    } else {
+      setMessage(true);
+    }
+  };
+
   return (
     <div className="movieForm">
       <h2>Modification du film</h2>
+      {message && <h4>L ensemble des champs doivent être renseigné</h4>}
       <p>
         <label htmlFor="title">
           Title
           <input
             type="text"
-            value={movie.title}
+            value={movie.title || null}
             onChange={(event) => updateMovie(event.target.value, 'title')}
           />
         </label>
@@ -37,7 +77,7 @@ const MovieForm = ({ myMovie, buttonAction }) => {
         <label htmlFor="synopsis">
           Synopsis
           <textarea
-            value={movie.synopsis}
+            value={movie.synopsis || null}
             onChange={(event) => updateMovie(event.target.value, 'synopsis')}
           />
         </label>
@@ -47,7 +87,7 @@ const MovieForm = ({ myMovie, buttonAction }) => {
           Genre
           <input
             type="text"
-            value={movie.genre}
+            value={movie.genre || null}
             onChange={(event) => updateMovie(event.target.value, 'genre')}
           />
         </label>
@@ -57,7 +97,7 @@ const MovieForm = ({ myMovie, buttonAction }) => {
           Année
           <input
             type="tnumber"
-            value={movie.year}
+            value={movie.year || null}
             onChange={(event) => updateMovie(event.target.value, 'year')}
           />
         </label>
@@ -67,18 +107,29 @@ const MovieForm = ({ myMovie, buttonAction }) => {
           Durée
           <input
             type="number"
-            value={movie.duration}
+            value={movie.duration || null}
             onChange={(event) => updateMovie(event.target.value, 'duration')}
           />
         </label>
       </p>
-      <button
-        className="popupBtn"
-        type="submit"
-        onClick={() => updateMovieInBDD()}
-      >
-        Valider
-      </button>
+      {/** Si create, bouton de création, sinon update */}
+      {create ? (
+        <button
+          className="popupBtn"
+          type="submit"
+          onClick={() => createMovieInBDD()}
+        >
+          Ajouter
+        </button>
+      ) : (
+        <button
+          className="popupBtn"
+          type="submit"
+          onClick={() => updateMovieInBDD()}
+        >
+          Modifier
+        </button>
+      )}
       <button className="popupBtn" type="submit" onClick={() => buttonAction()}>
         Annuler
       </button>
