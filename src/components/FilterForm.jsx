@@ -21,6 +21,7 @@ const FilterForm = ({
           value={genre}
           onChange={(event) => onSetGenre(event.target.value)}
         >
+          <option value="">Non défini</option>
           <option value="action">Action</option>
           <option value="comedy">Comedy</option>
           <option value="drama">Drama</option>

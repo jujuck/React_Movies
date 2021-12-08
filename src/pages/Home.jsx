@@ -10,16 +10,20 @@ import FilterForm from '../components/FilterForm';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
-  const [genre, setGenre] = useState('action');
+  const [genre, setGenre] = useState('');
   const [maxduration, setMaxDuration] = useState(0);
-  const [minyear, setMinYear] = useState(1950);
+  const [minyear, setMinYear] = useState(0);
 
   useEffect(() => {
+    let url = 'http://localhost:5000/movies?';
+    if (genre !== '') url += `genre=${genre}&`;
+    if (maxduration !== 0) url += `max_duration=${maxduration}&`;
+    if (minyear !== 0) url += `min_year=${minyear}`;
     axios
-      .get('http://localhost:5000/movies')
+      .get(url)
       .then((res) => setMovies(res.data))
       .catch((err) => console.error(err));
-  }, []);
+  }, [genre, maxduration, minyear]);
 
   const onSetMinYear = (value) => {
     setMinYear(value);
