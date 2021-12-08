@@ -1,5 +1,7 @@
 ## Préparation
 Ceci est un projet Front End s'intégrant dans un module Workshop avec le repo Back End Express_MySQL_Movies
+
+## Part 1 (Page, fetch CRUD for the movies)
 - 1/ Réaliser le workshop Express_MySQL_Movies (Part 1)
 - 2/ Git clone && git Install le projet puis paramétrer son .env
 - 3/ Mettre en place 3 routes avec leurs composants respectifs (/, /Single/:id, /AddMovie) Attention, en mode version React Router DOM V6
@@ -19,3 +21,12 @@ Ceci est un projet Front End s'intégrant dans un module Workshop avec le repo B
 - 15/ Ajout d'un bouton Modifier qui ouvrira un modal (Restructurer le message pour une meilleure utilisation du modal)
 - 16/ Dans ce modal, faire un formulaire qui récupérera les values du films pour modification, puis envoir de la requete PUT pour modifier le films. A la fermeture du modal les informations de la page doivent être à jour.
 - 17/ Mettre en place la page création à partir du formulaire déjà existant en y ajoutant une method Post. Pensez à y integrer la vérification de la présence des champs, sinon message UX puis si requete succes, redirection vers home
+
+## Part 2 (Service, filter)
+- 18/ Ajout d'un composant de filtre avec 2 inputs (Year and duration) et un select (genre)
+- 19/ Ajout de states dans home, liaison entre home et le filtre pour les values and methods associés
+- 20/ Insertion des filtres en param de requete
+- 21/ Mise en conditionnel du lancement de la requete (UseEffect) si requete en cours
+- 22/ Mise en place du service pour le fetch de données (avec async / await dans le useEffect) et prise en compte des erreurs
+- 23/ Création d'un composant Suggestion et insertion (CSS) dans Single
+- 24/ Fetch des films du même genre et affichage des 5 premiers (hors celui affiché) à partir du service mis en place
