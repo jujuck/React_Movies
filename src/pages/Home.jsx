@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import fetchAllMovies from '../services/movies';
 
 /** Import du CSS */
 import './Home.css';
@@ -16,18 +16,13 @@ const Home = () => {
   const [myTimeOut, setMyTimeOut] = useState();
 
   /**
-   * Fetch des données, gestion de la non multi requete
+   * Fetch des données
    */
   const getData = () => {
     // Préparation de l'Url
-    let url = 'http://localhost:5000/movies?';
-    if (genre !== '') url += `genre=${genre}&`;
-    if (maxduration !== 0) url += `max_duration=${maxduration}&`;
-    if (minyear !== 0) url += `min_year=${minyear}`;
-    axios
-      .get(url)
-      .then((res) => {
-        setMovies(res.data);
+    fetchAllMovies(genre, maxduration, minyear)
+      .then((data) => {
+        setMovies(data);
       })
       .catch((err) => console.error(err));
   };
