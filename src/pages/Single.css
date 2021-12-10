@@ -1,8 +1,22 @@
-.singleovieContainer {
-  width: 80%;
+.singleMovieContainer {
+  flex-basis: 70%;
   text-align: center;
-  margin: 10% auto;
   border: 2px solid black;
   border-radius: 15px;
-  padding: 5%;
+  padding: 2%;
+  height: 100%;
+}
+
+.suggestContainer {
+  flex-basis: 20%;
+  text-align: center;
+}
+
+.singleContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 20px;
+  margin: 10% 5% 0 5%;
 }

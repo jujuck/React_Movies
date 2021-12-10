@@ -8,6 +8,7 @@ import { BiEditAlt } from 'react-icons/bi';
 /** Import de composant */
 import Message from '../components/Message';
 import MovieForm from '../components/MovieForm';
+import Suggestion from '../components/Suggestion';
 
 /** Import du CSS */
 import './Single.css';
@@ -61,7 +62,7 @@ const Single = () => {
       .get(`http://localhost:5000/movies/${id}`)
       .then((res) => setMyMovie(res.data[0]))
       .catch((err) => console.error(err));
-  }, []);
+  }, [id]);
 
   const deleteOneMovie = () => {
     axios.delete(`http://localhost:5000/movies/${id}`).then(() => {
@@ -83,50 +84,56 @@ const Single = () => {
   };
 
   return (
-    <div id="singleMovie" className="singleovieContainer">
-      <Modal isOpen={confirmation} style={customStyles}>
-        <Message
-          title="Suppression d'un film"
-          description={`Confirmez vous la suppression du film ${myMovie.title}`}
-          buttonAction={onDeleteConfirmation}
+    <div className="singleContainer">
+      <div id="singleMovie" className="singleMovieContainer">
+        <Modal isOpen={confirmation} style={customStyles}>
+          <Message
+            title="Suppression d'un film"
+            description={`Confirmez vous la suppression du film ${myMovie.title}`}
+            buttonAction={onDeleteConfirmation}
+          />
+        </Modal>
+        <Modal isOpen={redirection} style={customStyles}>
+          <Message
+            title="Suppression d'un film"
+            description={`Suppression du film ${myMovie.title} en cours. Vous allez être redirigé`}
+          />
+        </Modal>
+        <Modal isOpen={modification} style={customStyles}>
+          <MovieForm myMovie={myMovie} buttonAction={onCancelModification} />
+        </Modal>
+        <h2>{myMovie.title}</h2>
+        <h4>{myMovie.synopsis}</h4>
+        <img
+          src={getImgSrc[myMovie.genre]}
+          alt={myMovie.title}
+          className="movieImg"
         />
-      </Modal>
-      <Modal isOpen={redirection} style={customStyles}>
-        <Message
-          title="Suppression d'un film"
-          description={`Suppression du film ${myMovie.title} en cours. Vous allez être redirigé`}
-        />
-      </Modal>
-      <Modal isOpen={modification} style={customStyles}>
-        <MovieForm myMovie={myMovie} buttonAction={onCancelModification} />
-      </Modal>
-      <h2>{myMovie.title}</h2>
-      <h4>{myMovie.synopsis}</h4>
-      <img
-        src={getImgSrc[myMovie.genre]}
-        alt={myMovie.title}
-        className="movieImg"
-      />
-      <h4>
-        Genre : {myMovie.genre} Durée: {myMovie.duration}
-      </h4>
-      <h4>Année de publication: {myMovie.year}</h4>
-      <button
-        type="submit"
-        onClick={() => setConfirmation(true)}
-        className="movieBtn"
-      >
-        Supprimer
-        <RiDeleteBin6Line />
-      </button>
-      <button
-        type="submit"
-        onClick={() => setModification(true)}
-        className="movieBtn"
-      >
-        Modifier
-        <BiEditAlt />
-      </button>
+        <h4>
+          Genre : {myMovie.genre} Durée: {myMovie.duration}
+        </h4>
+        <h4>Année de publication: {myMovie.year}</h4>
+        <button
+          type="submit"
+          onClick={() => setConfirmation(true)}
+          className="movieBtn"
+        >
+          Supprimer
+          <RiDeleteBin6Line />
+        </button>
+        <button
+          type="submit"
+          onClick={() => setModification(true)}
+          className="movieBtn"
+        >
+          Modifier
+          <BiEditAlt />
+        </button>
+      </div>
+      <div className="suggestContainer">
+        <h3>Suggestion</h3>
+        {myMovie.genre && <Suggestion genre={myMovie.genre} id={myMovie.id} />}
+      </div>
     </div>
   );
 };
