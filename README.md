@@ -32,9 +32,9 @@ Ceci est un projet Front End s'intégrant dans un module Workshop avec le repo B
 - 24/ Fetch des films du même genre et affichage des 5 premiers (hors celui affiché) à partir du service mis en place
 
 ## Part 3 (Sign In, Login and using context to manage page)
-- 25/ Ajout d'un page de sign In avec un formulaire (Nom, prenom, email, password en double)
+- 25/ Ajout d'un page de sign In avec un formulaire (Nom, prenom, email, password en double) avec son state pour mémoriser les input utilisateurs
 - 26/ Vérification de la durete du mot de passe et de sa similarité
-- 27/ Envoie de la requete et si success, redirection vers la page Login, sinon message d'erreur
+- 27/ Si les champs sont remplis correctement, activation du btouon et envoie de la requete et si success, redirection vers la page Login, sinon message d'erreur
 - 28/ Création de la page Login avec Email et password
 - 29/ Mise en place de la requete, si success, ajout du logo Avatar dans la barre de menu, sinon message d'erreur
 - 30/ Mise en place d'un context user, méméorisation des infos du succes de connexion dans ce context
