@@ -36,6 +36,6 @@ Ceci est un projet Front End s'intégrant dans un module Workshop avec le repo B
 - 26/ Vérification de la dureté du mot de passe et de sa similarité
 - 27/ Si les champs sont remplis correctement, activation du bouton et envoie de la requete et si success, redirection vers la page Login, sinon message d'erreur
 - 28/ Création de la page Login avec Email et password
-- 29/ Mise en place de la requete, si success, ajout du logo Avatar dans la barre de menu, sinon message d'erreur
+- 29/ Mise en place de la requete, si success, ajout du logo Avatar dans la barre de menu, sinon message d'erreur (Attention, passage en mode route post pour l'envoie du body, synchro a faire avec la back)
 - 30/ Mise en place d'un context user, méméorisation des infos du succes de connexion dans ce context
 - 31/ Mise en place d'accès restreint à la page Ajout d'un film (Elle ne doit apparaitre que si l'user est connecté), ainsi que des boutons de modification et suppression
